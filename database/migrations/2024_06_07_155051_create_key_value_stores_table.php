@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('key_value_store', function (Blueprint $table) {
+        Schema::create('key_value_stores', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
             $table->text('value');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('key_value_store');
+        Schema::dropIfExists('key_value_stores');
     }
 };
