@@ -13,7 +13,7 @@ class KeyValueController extends Controller
         $request->validate(['key' => 'required|string', 'value' => 'required|string', 'ttl' => 'nullable|integer']);
 
         $ttl = $request->input('ttl');
-        $expires_at = $ttl ? Carbon::now()->addSeconds($ttl) : null;
+        $expires_at = $ttl ? Carbon::now()->addSeconds(intval($ttl)) : null;
 
         KeyValueStore::updateOrCreate(
             ['key' => $request->input('key')],
@@ -38,7 +38,7 @@ class KeyValueController extends Controller
     {
         $deleted = KeyValueStore::where('key', $key)->delete();
         if ($deleted) {
-            return response()->json(['message' => 'Key deleted'], 200);
+            return response()->json(['message' => 'Key deleted']);
         }
         return response()->json(['message' => 'Key not found'], 404);
     }
