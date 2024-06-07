@@ -16,7 +16,7 @@ class StackController extends Controller
         $value = $request->input('value');
         $stack->value = $value;
         $stack->save();
-        return response()->json(['message' => 'Value ' . $value . 'added to stack']);
+        return response()->json(['message' => 'Value ' . $value . ' added to stack']);
     }
 
     public function getFromStack()
