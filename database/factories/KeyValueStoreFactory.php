@@ -15,7 +15,7 @@ class KeyValueStoreFactory extends Factory
         return [
             'key' => $this->faker->word(),
             'value' => $this->faker->word(),
-            'expires_at' => $this->faker->dateTime(),
+            'expires_at' => $this->faker->dateTimeBetween(Carbon::now(), Carbon::now()->addSeconds(29)),
         ];
     }
 
